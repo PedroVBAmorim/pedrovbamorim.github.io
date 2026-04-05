@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedro Amorim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f5f4f0;
+    --ink: #111110;
+    --ink2: #555550;
+    --ink3: #999990;
+    --accent: #1a472a;
+    --accent-light: #e8f0eb;
+    --border: rgba(17,17,16,0.10);
+    --card-bg: #ffffff;
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    height: 56px;
+    background: rgba(245,244,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink2);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 2.5rem 5rem;
+    padding-top: 56px;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--ink3);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    animation: fadeUp 0.6s 0.1s forwards;
+  }
+
+  .hero-name {
+    font-size: clamp(52px, 9vw, 120px);
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.2s forwards;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--ink2);
+  }
+
+  .hero-bottom {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.35s forwards;
+  }
+
+  .hero-desc {
+    max-width: 420px;
+    font-size: 15px;
+    color: var(--ink2);
+    line-height: 1.7;
+  }
+
+  .hero-desc strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    padding: 10px 20px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .btn-primary {
+    background: var(--ink);
+    color: var(--bg);
+    border: 1px solid var(--ink);
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--border);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--ink);
+    background: var(--card-bg);
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    height: 1px;
+    background: var(--border);
+    margin: 0 2.5rem;
+  }
+
+  /* SECTIONS */
+  section {
+    padding: 6rem 2.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--ink3);
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* EXPERIENCE */
+  .exp-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid var(--border);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+
+  .exp-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .exp-item:first-of-type { border-top: 1px solid var(--border); }
+
+  .exp-meta {
+    padding-top: 4px;
+  }
+
+  .exp-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink3);
+    letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+
+  .exp-company {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink2);
+  }
+
+  .exp-title {
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .exp-bullets li {
+    font-size: 14px;
+    color: var(--ink2);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .exp-bullets li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ink3);
+    font-family: var(--mono);
+    font-size: 12px;
+  }
+
+  .highlight {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: background 0.15s;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s, background 0.15s;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .project-card:hover {
+    background: var(--accent-light);
+  }
+
+  .project-card:hover .project-arrow {
+    transform: translate(3px, -3px);
+  }
+
+  .project-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .project-name {
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .project-arrow {
+    font-size: 18px;
+    color: var(--ink3);
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    color: var(--ink2);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 3px 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--ink2);
+  }
+
+  .project-stat {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+  }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+  }
+
+  .skill-group-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink3);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .skill-list li {
+    font-size: 14px;
+    color: var(--ink2);
+  }
+
+  /* CONTACT */
+  .contact-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  .contact-heading {
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+
+  .contact-heading em {
+    font-style: italic;
+    color: var(--ink2);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .footer-copy {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink3);
+    letter-spacing: 0.04em;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink3);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: var(--ink); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    nav { padding: 0 1.5rem; }
+    .hero { padding: 56px 1.5rem 4rem; }
+    .section-divider { margin: 0 1.5rem; }
+    section { padding: 4rem 1.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
+    footer { padding: 1.5rem; }
+    .contact-row { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">pedro amorim</a>
+  <ul class="nav-links">
+    <li><a href="#experience">experience</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <p class="hero-eyebrow">CS @ University of Florida · Class of 2027</p>
+  <h1 class="hero-name">Pedro<br><em>Amorim</em></h1>
+  <div class="hero-bottom">
+    <p class="hero-desc">
+      Building <strong>finance tools</strong> and <strong>full-stack apps</strong> at the intersection of software engineering and markets. Based in Gainesville, FL.
+    </p>
+    <div class="hero-links">
+      <a href="https://github.com/PedroVBAmorim" target="_blank" class="btn btn-primary">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/pedroamorimufl" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+      <a href="mailto:pedrovillasboasa@ufl.edu" class="btn btn-outline">Email</a>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Experience</p>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <p class="exp-date">Oct 2025 — Apr 2026</p>
+      <p class="exp-company">Self-Employed</p>
+    </div>
+    <div>
+      <h3 class="exp-title">Independent Market Analyst — FIFA World Cup Ticketing</h3>
+      <ul class="exp-bullets">
+        <li>Managed a portfolio of <span class="highlight">40+ positions (~$40K capital)</span>, generating ~$16K net profit (~40% ROI) through data-driven market analysis</li>
+        <li>Built Excel-based financial models tracking cost basis, platform fees, and net returns for real-time profitability analysis</li>
+        <li>Analyzed historical price trends and recently sold data across multiple marketplaces to identify demand patterns and optimize entry/exit timing</li>
+      </ul>
+    </div>
+  </div>
+
+</section>
+
+<div class="section-divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Projects</p>
+
+  <div class="projects-grid">
+
+    <a href="https://market-dashboard-c5ytwygv2kgyrqcxappmfkc.streamlit.app" target="_blank" class="project-card">
+      <div class="project-header">
+        <span class="project-name">Market Insight Dashboard</span>
+        <span class="project-arrow">↗</span>
+      </div>
+      <p class="project-desc">Live stock analysis tool processing OHLCV data for multiple equities. Computes cumulative return, annualized volatility, RSI, and max drawdown with automated plain-English market summaries.</p>
+      <p class="project-stat">~3s analysis generation · Live public URL</p>
+      <div class="project-stack">
+        <span class="tag">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">Streamlit</span>
+        <span class="tag">Plotly</span>
+        <span class="tag">NumPy</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/PedroVBAmorim" target="_blank" class="project-card">
+      <div class="project-header">
+        <span class="project-name">FinanceWatcher</span>
+        <span class="project-arrow">↗</span>
+      </div>
+      <p class="project-desc">Full-stack personal budget simulator with Node.js/Express backend and SQLite caching layer. Features 50/30/20 rule checker with letter-grade scoring, compound investment projections, and month-over-month charts.</p>
+      <p class="project-stat">~95% reduction in external API calls</p>
+      <div class="project-stack">
+        <span class="tag">JavaScript</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Express</span>
+        <span class="tag">SQLite</span>
+        <span class="tag">Chart.js</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/PedroVBAmorim" target="_blank" class="project-card">
+      <div class="project-header">
+        <span class="project-name">CreditCardIQ</span>
+        <span class="project-arrow">↗</span>
+      </div>
+      <p class="project-desc">macOS desktop app in C++ and Qt6 evaluating 30+ credit cards across 6+ financial criteria. Weighted scoring system with real-time filtering, side-by-side comparison, and modular OOP architecture.</p>
+      <p class="project-stat">30+ cards · 6+ criteria · Multi-card compare</p>
+      <div class="project-stack">
+        <span class="tag">C++</span>
+        <span class="tag">Qt6</span>
+        <span class="tag">CMake</span>
+        <span class="tag">OOP</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/PedroVBAmorim" target="_blank" class="project-card">
+      <div class="project-header">
+        <span class="project-name">Serverless Chatbot</span>
+        <span class="project-arrow">↗</span>
+      </div>
+      <p class="project-desc">NLP intent classifier built on AWS with zero server management overhead. Five multi-intent conversational flows with custom slot types, fallback handling, and context-aware structured responses.</p>
+      <p class="project-stat">100% serverless · Auto-scaling</p>
+      <div class="project-stack">
+        <span class="tag">Amazon Lex</span>
+        <span class="tag">AWS Lambda</span>
+        <span class="tag">Python</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- SKILLS -->
+<section>
+  <p class="section-label">Skills</p>
+  <div class="skills-grid">
+    <div>
+      <p class="skill-group-label">Languages</p>
+      <ul class="skill-list">
+        <li>Python</li>
+        <li>C++</li>
+        <li>JavaScript</li>
+        <li>SQL</li>
+      </ul>
+    </div>
+    <div>
+      <p class="skill-group-label">Frontend & Backend</p>
+      <ul class="skill-list">
+        <li>Node.js / Express</li>
+        <li>REST APIs</li>
+        <li>SQLite</li>
+        <li>HTML / CSS</li>
+        <li>Chart.js</li>
+      </ul>
+    </div>
+    <div>
+      <p class="skill-group-label">Data & Analysis</p>
+      <ul class="skill-list">
+        <li>Pandas / NumPy</li>
+        <li>Plotly / Streamlit</li>
+        <li>Excel (financial modeling)</li>
+        <li>Alpha Vantage API</li>
+      </ul>
+    </div>
+    <div>
+      <p class="skill-group-label">Cloud & Tools</p>
+      <ul class="skill-list">
+        <li>AWS Lambda / Lex</li>
+        <li>Git / GitHub</li>
+        <li>Figma</li>
+        <li>CMake / Qt6</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-row">
+    <h2 class="contact-heading">Let's<br><em>connect.</em></h2>
+    <div class="hero-links">
+      <a href="mailto:pedrovillasboasa@ufl.edu" class="btn btn-primary">Send an email</a>
+      <a href="https://www.linkedin.com/in/pedroamorimufl" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+      <a href="https://github.com/PedroVBAmorim" target="_blank" class="btn btn-outline">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="footer-copy">© 2026 Pedro Villas Boas Amorim</p>
+  <div class="footer-links">
+    <a href="https://github.com/PedroVBAmorim" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/pedroamorimufl" target="_blank">LinkedIn</a>
+    <a href="mailto:pedrovillasboasa@ufl.edu">Email</a>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.exp-item, .project-card').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

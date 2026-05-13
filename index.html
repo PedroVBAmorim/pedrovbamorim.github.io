@@ -32,7 +32,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -73,7 +72,6 @@
 
   .nav-links a:hover { color: var(--ink); }
 
-  /* HERO */
   .hero {
     min-height: 100vh;
     display: flex;
@@ -172,14 +170,12 @@
     background: var(--card-bg);
   }
 
-  /* DIVIDER */
   .section-divider {
     height: 1px;
     background: var(--border);
     margin: 0 2.5rem;
   }
 
-  /* SECTIONS */
   section {
     padding: 6rem 2.5rem;
     max-width: 1100px;
@@ -205,7 +201,6 @@
     background: var(--border);
   }
 
-  /* EXPERIENCE */
   .exp-item {
     display: grid;
     grid-template-columns: 1fr 2fr;
@@ -224,9 +219,7 @@
 
   .exp-item:first-of-type { border-top: 1px solid var(--border); }
 
-  .exp-meta {
-    padding-top: 4px;
-  }
+  .exp-meta { padding-top: 4px; }
 
   .exp-date {
     font-family: var(--mono);
@@ -301,7 +294,6 @@
     font-weight: 500;
   }
 
-  /* PROJECTS */
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -323,7 +315,21 @@
     color: inherit;
   }
 
-  .project-card.visible {
+  .project-card-static {
+    background: var(--card-bg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s, transform 0.5s, background 0.15s;
+    color: inherit;
+    cursor: default;
+  }
+
+  .project-card.visible,
+  .project-card-static.visible {
     opacity: 1;
     transform: translateY(0);
   }
@@ -353,6 +359,19 @@
     font-size: 18px;
     color: var(--ink3);
     transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .project-badge {
+    font-family: var(--mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+    background: #fff8e6;
+    color: #a07000;
+    border: 1px solid rgba(160,112,0,0.2);
     flex-shrink: 0;
   }
 
@@ -387,7 +406,6 @@
     letter-spacing: 0.04em;
   }
 
-  /* SKILLS */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -415,7 +433,6 @@
     color: var(--ink2);
   }
 
-  /* CONTACT */
   .contact-row {
     display: flex;
     align-items: center;
@@ -436,7 +453,6 @@
     color: var(--ink2);
   }
 
-  /* FOOTER */
   footer {
     border-top: 1px solid var(--border);
     padding: 2rem 2.5rem;
@@ -472,13 +488,11 @@
 
   .footer-links a:hover { color: var(--ink); }
 
-  /* ANIMATIONS */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* RESPONSIVE */
   @media (max-width: 900px) {
     .skills-grid { grid-template-columns: repeat(3, 1fr); }
   }
@@ -506,7 +520,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <p class="hero-eyebrow">CS @ University of Florida · Class of 2028</p>
   <h1 class="hero-name">Pedro<br><em>Amorim</em></h1>
@@ -524,7 +537,6 @@
 
 <div class="section-divider"></div>
 
-<!-- EXPERIENCE -->
 <section id="experience">
   <p class="section-label">Experience</p>
 
@@ -558,7 +570,7 @@
       <ul class="exp-bullets">
         <li>Conducted real-time stress testing during live sports events, identifying UI/UX bugs and performance bottlenecks under peak user conditions</li>
         <li>Collaborated directly with founding team to provide structured product feedback, influencing feature design and user flow optimizations</li>
-        <li>Tracked and logged <span class="highlight">100+ test cases</span> across multiple sprint cycles, contributing to a structured QA process in an early-stage agile environment</li>
+        <li>Tracked and logged <span class="highlight">32+ test cases</span> across multiple sprint cycles, contributing to a structured QA process in an early-stage agile environment</li>
       </ul>
     </div>
   </div>
@@ -582,7 +594,6 @@
 
 <div class="section-divider"></div>
 
-<!-- PROJECTS -->
 <section id="projects">
   <p class="section-label">Projects</p>
 
@@ -620,10 +631,10 @@
       </div>
     </a>
 
-    <a href="https://github.com/PedroVBAmorim" target="_blank" class="project-card">
+    <div class="project-card-static">
       <div class="project-header">
         <span class="project-name">CardMatch</span>
-        <span class="project-arrow">↗</span>
+        <span class="project-badge">Launching Soon</span>
       </div>
       <p class="project-desc">Full-stack fintech platform modeling user spending across 5+ categories and computing expected annual value for credit cards using a custom scoring engine. Ranking algorithm incorporates reward multipliers, signup bonus amortization, annual fees, and user preference weighting (±20%), identifying $300–$500+ annual value differences across card options.</p>
       <p class="project-stat">5+ spending categories · Real-time scoring · Deploy-ready</p>
@@ -634,7 +645,7 @@
         <span class="tag">Supabase</span>
         <span class="tag">PostgreSQL</span>
       </div>
-    </a>
+    </div>
 
     <a href="https://github.com/PedroVBAmorim/FinanceWatcher" target="_blank" class="project-card">
       <div class="project-header">
@@ -652,7 +663,7 @@
       </div>
     </a>
 
-    <a href="https://github.com/PedroVBAmorim" target="_blank" class="project-card">
+    <a href="https://github.com/PedroVBAmorim/serverless-chatbot" target="_blank" class="project-card">
       <div class="project-header">
         <span class="project-name">Serverless Chatbot</span>
         <span class="project-arrow">↗</span>
@@ -671,7 +682,6 @@
 
 <div class="section-divider"></div>
 
-<!-- SKILLS -->
 <section>
   <p class="section-label">Skills</p>
   <div class="skills-grid">
@@ -729,7 +739,6 @@
 
 <div class="section-divider"></div>
 
-<!-- CERTIFICATIONS -->
 <section id="certifications">
   <p class="section-label">Certifications</p>
 
@@ -790,7 +799,6 @@
 
 <div class="section-divider"></div>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="contact-row">
     <h2 class="contact-heading">Let's<br><em>connect.</em></h2>
@@ -820,7 +828,7 @@
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.exp-item, .project-card').forEach(el => observer.observe(el));
+  document.querySelectorAll('.exp-item, .project-card, .project-card-static').forEach(el => observer.observe(el));
 </script>
 
 </body>

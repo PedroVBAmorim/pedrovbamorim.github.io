@@ -550,12 +550,29 @@
       <h3 class="exp-title">Backend Engineer Intern</h3>
       <p class="exp-subtitle">AWS-Invested · NVIDIA Inception · Pre-Seed AI-Native Commerce Infrastructure</p>
       <ul class="exp-bullets">
-        <li>Built a <span class="highlight">Node.js/TypeScript webhook pipeline</span> routing unresolved Intercom AI conversations to Zendesk agents, automatically surfacing Salesforce contract data in the agent sidebar to reduce context-switching during live support sessions</li>
-        <li>Built a server-side <span class="highlight">Stripe payment integration</span> for a live auction platform using Supabase Edge Functions, Deno, and React — handling payment intent creation, webhook signature verification, and payment status sync to reconcile auction totals on confirmation</li>
-        <li>Led backend development for a <span class="highlight">multimodal Buy/Sell companion app</span> by architecting Node.js/TypeScript microservices integrating image analysis, barcode scanning, and search retrieval to automate inventory creation, product valuation, and catalog management workflows</li>
-        <li>Designing <span class="highlight">Redis/BullMQ job queues</span> that poll marketplace APIs and process inventory and pricing updates for <span class="highlight">50,000+ SKUs</span></li>
-        <li>Building webhook execution logic that automatically delists sold inventory from all marketplaces within <span class="highlight">60 seconds</span>, minimizing oversell risk</li>
-        <li>Optimized <span class="highlight">PostgreSQL and Redis</span> performance to support low-latency search and high-concurrency workflows</li>
+        <li>Built a <span class="highlight">Node.js/TypeScript webhook pipeline</span> routing unresolved Intercom AI conversations to Zendesk agents, surfacing Salesforce contract data in the agent sidebar to reduce context-switching during live support sessions</li>
+        <li>Built a server-side <span class="highlight">Stripe payment integration</span> for a live auction platform using Supabase Edge Functions and TypeScript — handling PaymentIntent creation, webhook signature verification, and payment status sync</li>
+        <li>Serving as primary backend engineer for a <span class="highlight">React Native buy/sell companion app</span>, building a rate-limited Gemini Vision proxy for item identification and designing the Supabase schema and RLS policies powering a multi-merchant item lifecycle</li>
+        <li>Diagnosed a P1 production bug blocking vendor onboarding by auditing Supabase RLS policies and identifying a missing INSERT grant</li>
+        <li>Audited an eBay OAuth integration, surfacing token-revocation and configuration gaps ahead of launch</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <p class="exp-date">Sep 2025 — Present</p>
+      <p class="exp-company">CardMatch</p>
+      <span class="exp-badge">Current</span>
+    </div>
+    <div>
+      <h3 class="exp-title">Founder & Full-Stack Engineer <a href="https://github.com/PedroVBAmorim/CardMatch" target="_blank" style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: var(--ink3); text-decoration: none; letter-spacing: 0.04em; margin-left: 8px;">↗ view repo</a></h3>
+      <p class="exp-subtitle">Zero-Friction Fintech Card-Recommendation Platform</p>
+      <ul class="exp-bullets">
+        <li>Designed an object-oriented C++/Qt prototype that evolved into a full-stack fintech platform, reaching <span class="highlight">2,500+ users and 5,000+ pageviews</span> within 5 days of launch via organic Reddit distribution (100K+ impressions)</li>
+        <li>Built a <span class="highlight">Python/FastAPI backend</span> handling guest sessions and rate limiting, with caching and dual deployment across Railway and Render for uptime and reliability</li>
+        <li>Designed a 48-card <span class="highlight">Supabase/PostgreSQL schema</span> for issuers, APR, and reward tiers, backed by 240+ tests in a CI/CD pipeline (GitHub Actions)</li>
+        <li>Debugged a Python scoring algorithm — surfaced via user feedback — that over-weighted one spend category, rebalancing weights to deliver more accurate multi-card recommendations</li>
       </ul>
     </div>
   </div>
@@ -570,24 +587,7 @@
       <h3 class="exp-title">QA & Testing Engineer</h3>
       <p class="exp-subtitle">Sportstech Startup (Early-Stage)</p>
       <ul class="exp-bullets">
-        <li>Conducted real-time stress testing during live sports events, identifying UI/UX bugs and performance bottlenecks under peak-traffic conditions; logged and tracked <span class="highlight">42+ test cases</span> across multiple sprint cycles in an early-stage agile environment</li>
-        <li>Delivered structured product feedback directly influencing feature design — proposed <span class="highlight">microcopy error handling, step-progress indicators, and optional skip flows</span> adopted into the product roadmap</li>
-        <li>Collaborated directly with founding team to provide structured feedback, influencing feature design and user flow optimizations</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-meta">
-      <p class="exp-date">Oct 2025 — Apr 2026</p>
-      <p class="exp-company">Self-Employed</p>
-    </div>
-    <div>
-      <h3 class="exp-title">Independent Market Analyst — FIFA World Cup Ticketing <a href="https://github.com/PedroVBAmorim/fifa-ticket-market-analysis" target="_blank" style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: var(--ink3); text-decoration: none; letter-spacing: 0.04em; margin-left: 8px;">↗ view repo</a></h3>
-      <ul class="exp-bullets">
-        <li>Managed a portfolio of <span class="highlight">40+ positions (~$40K capital)</span>, generating ~$16K net profit (~40% ROI) through data-driven market analysis</li>
-        <li>Built Excel-based financial models tracking cost basis, platform fees, and net returns for real-time profitability analysis</li>
-        <li>Analyzed historical price trends and recently sold data across multiple marketplaces to identify demand patterns and optimize entry/exit timing</li>
+        <li>Audited onboarding, error states, and settings UI through structured 1:1 founder sessions, surfacing 6 actionable UX issues that informed product roadmap priorities</li>
       </ul>
     </div>
   </div>
@@ -600,23 +600,6 @@
   <p class="section-label">Projects</p>
 
   <div class="projects-grid">
-
-    <a href="https://github.com/PedroVBAmorim/CardMatch" target="_blank" class="project-card">
-      <div class="project-header">
-        <span class="project-name">CardMatch</span>
-        <span class="project-arrow">↗</span>
-      </div>
-      <p class="project-desc">Full-stack fintech platform launched to 2,500+ unique users and 5,000+ pageviews in 5 days via organic distribution (100K+ Reddit impressions). Zero-friction access — no signup, no account, no credit pull. Custom scoring engine models spending across 5+ categories and ranks credit cards by expected annual value, incorporating reward multipliers, signup bonus amortization, annual fees, and user preference weighting.</p>
-      <p class="project-stat">2,500+ users · 5,000+ pageviews · 48-card catalog</p>
-      <div class="project-stack">
-        <span class="tag">Flutter</span>
-        <span class="tag">Python</span>
-        <span class="tag">FastAPI</span>
-        <span class="tag">Supabase</span>
-        <span class="tag">PostgreSQL</span>
-        <span class="tag">Railway</span>
-      </div>
-    </a>
 
     <a href="https://github.com/PedroVBAmorim/kalshi-edge" target="_blank" class="project-card">
       <div class="project-header">
@@ -634,7 +617,34 @@
       </div>
     </a>
 
-    <a href="https://market-dashboard-c5ytwygv2kgyrqcxappmfkc.streamlit.app" target="_blank" class="project-card">
+    <a href="https://github.com/StellarOps-Labs/stellarops-indexer/pull/11" target="_blank" class="project-card">
+      <div class="project-header">
+        <span class="project-name">StellarOps Indexer — Open Source Contribution</span>
+        <span class="project-arrow">↗</span>
+      </div>
+      <p class="project-desc">Contributed a contributor-activity-summary REST endpoint, including tests and documentation, to this open-source GitHub indexing tool.</p>
+      <p class="project-stat">Merged PR</p>
+      <div class="project-stack">
+        <span class="tag">TypeScript</span>
+        <span class="tag">Express</span>
+        <span class="tag">Node.js</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/PedroVBAmorim/fifa-ticket-market-analysis" target="_blank" class="project-card">
+      <div class="project-header">
+        <span class="project-name">FIFA World Cup Ticket Market Analysis</span>
+        <span class="project-arrow">↗</span>
+      </div>
+      <p class="project-desc">Managed a portfolio of 40+ positions (~$40K capital), generating ~$16K net profit (~40% ROI) through data-driven market timing. Built Excel-based financial models tracking cost basis, platform fees, and net returns; analyzed historical pricing and demand data across marketplaces to optimize entry/exit timing.</p>
+      <p class="project-stat">~40% ROI · $16K profit · 40+ positions</p>
+      <div class="project-stack">
+        <span class="tag">Excel</span>
+        <span class="tag">Data Modeling</span>
+      </div>
+    </a>
+
+    <a href="https://github.com/PedroVBAmorim/market-dashboard" target="_blank" class="project-card">
       <div class="project-header">
         <span class="project-name">Market Insight Dashboard</span>
         <span class="project-arrow">↗</span>
@@ -647,36 +657,6 @@
         <span class="tag">Streamlit</span>
         <span class="tag">Plotly</span>
         <span class="tag">NumPy</span>
-      </div>
-    </a>
-
-    <a href="https://github.com/PedroVBAmorim/FinanceWatcher" target="_blank" class="project-card">
-      <div class="project-header">
-        <span class="project-name">FinanceWatcher</span>
-        <span class="project-arrow">↗</span>
-      </div>
-      <p class="project-desc">Full-stack personal budget simulator with Node.js/Express backend and SQLite caching layer. Features 50/30/20 rule checker with letter-grade scoring, compound investment projections, and month-over-month charts. Deployed to GitHub Pages and Render.</p>
-      <p class="project-stat">~95% reduction in external API calls</p>
-      <div class="project-stack">
-        <span class="tag">JavaScript</span>
-        <span class="tag">Node.js</span>
-        <span class="tag">Express</span>
-        <span class="tag">SQLite</span>
-        <span class="tag">Chart.js</span>
-      </div>
-    </a>
-
-    <a href="https://github.com/PedroVBAmorim/serverless-chatbot" target="_blank" class="project-card">
-      <div class="project-header">
-        <span class="project-name">Serverless Chatbot</span>
-        <span class="project-arrow">↗</span>
-      </div>
-      <p class="project-desc">NLP intent classifier built on AWS with zero server management overhead. Five multi-intent conversational flows with custom slot types, fallback handling, and context-aware structured responses.</p>
-      <p class="project-stat">100% serverless · Auto-scaling</p>
-      <div class="project-stack">
-        <span class="tag">Amazon Lex</span>
-        <span class="tag">AWS Lambda</span>
-        <span class="tag">Python</span>
       </div>
     </a>
 
@@ -702,9 +682,9 @@
     <div>
       <p class="skill-group-label">Frontend</p>
       <ul class="skill-list">
+        <li>React</li>
         <li>HTML / CSS</li>
         <li>Flutter</li>
-        <li>Chart.js</li>
         <li>Streamlit</li>
       </ul>
     </div>
@@ -714,9 +694,7 @@
         <li>Node.js / Express</li>
         <li>FastAPI</li>
         <li>REST APIs</li>
-        <li>GraphQL</li>
         <li>PostgreSQL</li>
-        <li>Redis</li>
       </ul>
     </div>
     <div>
@@ -726,19 +704,15 @@
         <li>Plotly</li>
         <li>Excel</li>
         <li>Supabase</li>
-        <li>SQLite</li>
-        <li>Docker</li>
       </ul>
     </div>
     <div>
       <p class="skill-group-label">Cloud & Tools</p>
       <ul class="skill-list">
         <li>AWS Lambda / Lex</li>
+        <li>Docker</li>
         <li>Git / GitHub</li>
         <li>Railway / Render</li>
-        <li>Netlify</li>
-        <li>CMake / Qt6</li>
-        <li>Figma</li>
       </ul>
     </div>
   </div>

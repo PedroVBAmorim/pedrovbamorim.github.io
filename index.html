@@ -516,6 +516,7 @@
   <ul class="nav-links">
     <li><a href="#experience">experience</a></li>
     <li><a href="#projects">projects</a></li>
+    <li><a href="#achievements">achievements</a></li>
     <li><a href="#contact">contact</a></li>
   </ul>
 </nav>
@@ -550,18 +551,16 @@
       <h3 class="exp-title">Backend Engineer Intern</h3>
       <p class="exp-subtitle">AWS-Invested · NVIDIA Inception · Pre-Seed AI-Native Commerce Infrastructure</p>
       <ul class="exp-bullets">
-        <li>Built a <span class="highlight">Node.js/TypeScript webhook pipeline</span> routing unresolved Intercom AI conversations to Zendesk agents, surfacing Salesforce contract data in the agent sidebar to reduce context-switching during live support sessions</li>
-        <li>Built a server-side <span class="highlight">Stripe payment integration</span> for a live auction platform using Supabase Edge Functions and TypeScript — handling PaymentIntent creation, webhook signature verification, and payment status sync</li>
-        <li>Serving as primary backend engineer for a <span class="highlight">React Native buy/sell companion app</span>, building a rate-limited Gemini Vision proxy for item identification and designing the Supabase schema and RLS policies powering a multi-merchant item lifecycle</li>
-        <li>Diagnosed a P1 production bug blocking vendor onboarding by auditing Supabase RLS policies and identifying a missing INSERT grant</li>
-        <li>Audited an eBay OAuth integration, surfacing token-revocation and configuration gaps ahead of launch</li>
+        <li>Built a <span class="highlight">Node.js/TypeScript webhook pipeline</span> that routes Intercom AI conversations to Zendesk agents, giving support staff instant visibility into customer info for faster resolution</li>
+        <li>Worked with 3 engineers on a <span class="highlight">React/Stripe payment integration</span> for a live auction platform, reviewing and critiquing each other's code to prevent duplicate charges</li>
+        <li>Led backend development of a <span class="highlight">Buy/Sell companion app</span> using JavaScript, RESTful APIs, and a Gemini Vision AI pipeline, resolving SQL permission issues and enabling the sales team to quickly identify, price, and prioritize valuable items</li>
       </ul>
     </div>
   </div>
 
   <div class="exp-item">
     <div class="exp-meta">
-      <p class="exp-date">March 2025 — Present</p>
+      <p class="exp-date">March 2026 — Present</p>
       <p class="exp-company">CardChirp (Previously CardMatch)</p>
       <span class="exp-badge">Current</span>
     </div>
@@ -569,10 +568,10 @@
       <h3 class="exp-title">Founder & Full-Stack Engineer <a href="https://github.com/PedroVBAmorim/CardChirp" target="_blank" style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: var(--ink3); text-decoration: none; letter-spacing: 0.04em; margin-left: 8px;">↗ view repo</a></h3>
       <p class="exp-subtitle">Zero-Friction Fintech Card-Recommendation Platform</p>
       <ul class="exp-bullets">
-        <li>Designed an object-oriented C++/Qt prototype that evolved into a full-stack fintech platform, reaching <span class="highlight">7000 peak users and 3500+ active users</li>
-        <li>Built a <span class="highlight">Python/FastAPI backend</span> handling guest sessions and rate limiting, with caching and dual deployment across Railway and Render for uptime and reliability</li>
-        <li>Designed a 48-card <span class="highlight">Supabase/PostgreSQL schema</span> for issuers, APR, and reward tiers, backed by 240+ tests in a CI/CD pipeline (GitHub Actions)</li>
-        <li>Debugged a Python scoring algorithm — surfaced via user feedback — that over-weighted one spend category, rebalancing weights to deliver more accurate multi-card recommendations</li>
+        <li>Designed an object-oriented (OOP) <span class="highlight">C++ prototype</span> that grew into a Python, HTML, and Dart fintech platform with <span class="highlight">7,000 monthly users at peak and 3,500+ active</span></li>
+        <li>Worked with beta testers to diagnose a Python scoring algorithm using SQL, incorporating user feedback to rebalance category weights and improve multi-card recommendations</li>
+        <li>Designed a <span class="highlight">Supabase/PostgreSQL schema</span> for card issuers, APRs, and reward tiers, with GitHub Actions for CI/CD to catch errors before deployment</li>
+        <li>Built RESTful APIs with <span class="highlight">FastAPI and Redis</span>, handling guest sessions, rate limiting, and caching across Railway and Render for uptime and reliability at scale</li>
       </ul>
     </div>
   </div>
@@ -584,10 +583,24 @@
       <span class="exp-badge">Current</span>
     </div>
     <div>
-      <h3 class="exp-title">QA & Testing Engineer</h3>
+      <h3 class="exp-title">QA Engineering Intern</h3>
       <p class="exp-subtitle">Sportstech Startup (Early-Stage)</p>
       <ul class="exp-bullets">
         <li>Audited onboarding, error states, and settings UI through structured 1:1 founder sessions, surfacing 6 actionable UX issues that informed product roadmap priorities</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="exp-item">
+    <div class="exp-meta">
+      <p class="exp-date">July 2026</p>
+      <p class="exp-company">DataDave</p>
+      <span class="exp-badge">Open Source</span>
+    </div>
+    <div>
+      <h3 class="exp-title">Open Source Contribution</h3>
+      <ul class="exp-bullets">
+        <li>Added a <span class="highlight">CI security rule</span> that blocks shell command tracing, preventing secrets and sensitive data from appearing in build logs and reducing the risk of credential exposure</li>
       </ul>
     </div>
   </div>
@@ -617,17 +630,16 @@
       </div>
     </a>
 
-    <a href="https://github.com/StellarOps-Labs/stellarops-indexer/pull/11" target="_blank" class="project-card">
+    <a href="#" class="project-card">
       <div class="project-header">
-        <span class="project-name">StellarOps Indexer — Open Source Contribution</span>
+        <span class="project-name">DataDave — Open Source Contribution</span>
         <span class="project-arrow">↗</span>
       </div>
-      <p class="project-desc">Contributed a contributor-activity-summary REST endpoint, including tests and documentation, to this open-source GitHub indexing tool.</p>
+      <p class="project-desc">Added a CI security rule that blocks shell command tracing, preventing secrets and sensitive data from appearing in build logs and reducing the risk of credential exposure.</p>
       <p class="project-stat">Merged PR</p>
       <div class="project-stack">
-        <span class="tag">TypeScript</span>
-        <span class="tag">Express</span>
-        <span class="tag">Node.js</span>
+        <span class="tag">CI/CD</span>
+        <span class="tag">Security</span>
       </div>
     </a>
 
@@ -695,6 +707,7 @@
         <li>FastAPI</li>
         <li>REST APIs</li>
         <li>PostgreSQL</li>
+        <li>Redis</li>
       </ul>
     </div>
     <div>
@@ -712,7 +725,8 @@
         <li>AWS Lambda / Lex</li>
         <li>Docker</li>
         <li>Git / GitHub</li>
-        <li>Railway / Render</li>
+        <li>Railway / Render / Netlify</li>
+        <li>Stripe</li>
       </ul>
     </div>
   </div>
@@ -776,6 +790,27 @@
     </div>
   </div>
 
+</section>
+
+<div class="section-divider"></div>
+
+<section id="achievements">
+  <p class="section-label">Achievements</p>
+  <div class="skills-grid" style="grid-template-columns: repeat(2, 1fr);">
+    <div>
+      <p class="skill-group-label">Taekwondo</p>
+      <ul class="skill-list">
+        <li>Black Belt</li>
+      </ul>
+    </div>
+    <div>
+      <p class="skill-group-label">Valorant</p>
+      <ul class="skill-list">
+        <li>Top 70 NA</li>
+        <li>Top 0.0003% (30M+ players)</li>
+      </ul>
+    </div>
+  </div>
 </section>
 
 <div class="section-divider"></div>

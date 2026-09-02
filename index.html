@@ -30,6 +30,7 @@
     color: var(--ink);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
 
   nav {
@@ -97,7 +98,7 @@
     font-weight: 300;
     line-height: 0.92;
     letter-spacing: -0.03em;
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
     opacity: 0;
     animation: fadeUp 0.7s 0.2s forwards;
   }
@@ -107,6 +108,21 @@
     color: var(--ink2);
   }
 
+  .hero-role {
+    font-size: clamp(17px, 2.2vw, 22px);
+    font-weight: 400;
+    color: var(--ink);
+    max-width: 560px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeUp 0.7s 0.3s forwards;
+  }
+
+  .hero-role strong {
+    font-weight: 500;
+    color: var(--accent);
+  }
+
   .hero-bottom {
     display: flex;
     align-items: flex-end;
@@ -114,12 +130,12 @@
     gap: 2rem;
     flex-wrap: wrap;
     opacity: 0;
-    animation: fadeUp 0.7s 0.35s forwards;
+    animation: fadeUp 0.7s 0.4s forwards;
   }
 
   .hero-desc {
     max-width: 420px;
-    font-size: 15px;
+    font-size: 14px;
     color: var(--ink2);
     line-height: 1.7;
   }
@@ -139,13 +155,14 @@
     font-family: var(--mono);
     font-size: 12px;
     letter-spacing: 0.04em;
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 2px;
     text-decoration: none;
     transition: all 0.15s;
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    min-height: 44px;
   }
 
   .btn-primary {
@@ -168,6 +185,12 @@
   .btn-outline:hover {
     border-color: var(--ink);
     background: var(--card-bg);
+  }
+
+  .btn-small {
+    font-size: 11px;
+    padding: 8px 14px;
+    min-height: 38px;
   }
 
   .section-divider {
@@ -294,9 +317,27 @@
     font-weight: 500;
   }
 
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1rem;
+  }
+
+  .stat-chip {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    padding: 6px 10px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border: 1px solid rgba(26,71,42,0.15);
+    border-radius: 2px;
+  }
+
   .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1px;
     background: var(--border);
     border: 1px solid var(--border);
@@ -307,59 +348,30 @@
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s, transform 0.5s, background 0.15s;
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .project-card-static {
-    background: var(--card-bg);
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    gap: 0.9rem;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.5s, transform 0.5s, background 0.15s;
     color: inherit;
-    cursor: default;
   }
 
-  .project-card.visible,
-  .project-card-static.visible {
+  .project-card.visible {
     opacity: 1;
     transform: translateY(0);
-  }
-
-  .project-card:hover {
-    background: var(--accent-light);
-  }
-
-  .project-card:hover .project-arrow {
-    transform: translate(3px, -3px);
   }
 
   .project-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    gap: 0.75rem;
   }
 
   .project-name {
     font-size: 17px;
     font-weight: 500;
     letter-spacing: -0.01em;
-    line-height: 1.2;
-  }
-
-  .project-arrow {
-    font-size: 18px;
-    color: var(--ink3);
-    transition: transform 0.2s;
-    flex-shrink: 0;
+    line-height: 1.25;
   }
 
   .project-badge {
@@ -373,13 +385,54 @@
     color: #a07000;
     border: 1px solid rgba(160,112,0,0.2);
     flex-shrink: 0;
+    white-space: nowrap;
   }
 
   .project-desc {
     font-size: 13px;
     color: var(--ink2);
     line-height: 1.6;
-    flex: 1;
+  }
+
+  .project-highlights {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .project-highlights li {
+    font-size: 13px;
+    color: var(--ink2);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.55;
+  }
+
+  .project-highlights li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--ink3);
+    font-family: var(--mono);
+    font-size: 11px;
+  }
+
+  .project-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .project-stat-chip {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.02em;
+    padding: 4px 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--accent);
   }
 
   .project-stack {
@@ -399,11 +452,32 @@
     color: var(--ink2);
   }
 
-  .project-stat {
+  .project-links {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .project-links a {
     font-family: var(--mono);
     font-size: 11px;
-    color: var(--accent);
     letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    transition: all 0.15s;
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .project-links a:hover {
+    border-color: var(--ink);
+    background: var(--accent-light);
   }
 
   .skills-grid {
@@ -429,6 +503,55 @@
   }
 
   .skill-list li {
+    font-size: 14px;
+    color: var(--ink2);
+  }
+
+  .cert-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .cert-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .cert-row:first-child { border-top: 1px solid var(--border); }
+
+  .cert-name {
+    font-size: 14px;
+    color: var(--ink);
+  }
+
+  .cert-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink3);
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+  }
+
+  .personal-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .personal-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink3);
+    text-transform: uppercase;
+  }
+
+  .personal-value {
     font-size: 14px;
     color: var(--ink2);
   }
@@ -498,38 +621,49 @@
   }
 
   @media (max-width: 700px) {
-    nav { padding: 0 1.5rem; }
-    .hero { padding: 56px 1.5rem 4rem; }
-    .section-divider { margin: 0 1.5rem; }
-    section { padding: 4rem 1.5rem; }
+    nav { padding: 0 1.25rem; }
+    .nav-links { gap: 1.1rem; }
+    .hero { padding: 56px 1.25rem 3.5rem; }
+    .section-divider { margin: 0 1.25rem; }
+    section { padding: 3.5rem 1.25rem; }
     .exp-item { grid-template-columns: 1fr; gap: 0.75rem; }
-    footer { padding: 1.5rem; }
+    footer { padding: 1.5rem 1.25rem; }
     .contact-row { flex-direction: column; align-items: flex-start; }
     .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .btn { flex: 1 1 auto; justify-content: center; }
+    .hero-links { width: 100%; }
+    .cert-row { flex-direction: column; gap: 0.25rem; }
+  }
+
+  @media (max-width: 420px) {
+    .nav-links { gap: 0.8rem; }
+    .nav-links a { font-size: 11px; }
   }
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">pedro amorim</a>
+  <a href="#" class="nav-logo">Pedro Amorim</a>
   <ul class="nav-links">
-    <li><a href="#experience">experience</a></li>
-    <li><a href="#projects">projects</a></li>
-    <li><a href="#achievements">achievements</a></li>
-    <li><a href="#contact">contact</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
 <div class="hero">
   <p class="hero-eyebrow">CS @ University of Florida · Class of 2028</p>
   <h1 class="hero-name">Pedro<br><em>Amorim</em></h1>
+  <p class="hero-role"><strong>Backend & Software Engineer</strong> building scalable products, APIs, and AI-powered systems.</p>
   <div class="hero-bottom">
     <p class="hero-desc">
-      Building <strong>finance tools</strong> and <strong>full-stack apps</strong> at the intersection of software engineering and markets. Based in Gainesville, FL.
+      Currently interning on backend systems at WRTH, and founder of a fintech platform that reached <strong>7,000 monthly users at peak</strong>. Based in Gainesville, FL.
     </p>
     <div class="hero-links">
-      <a href="https://github.com/PedroVBAmorim" target="_blank" class="btn btn-primary">GitHub ↗</a>
+      <a href="./resume.pdf" target="_blank" class="btn btn-primary">Resume ↗</a>
+      <a href="https://github.com/PedroVBAmorim" target="_blank" class="btn btn-outline">GitHub ↗</a>
       <a href="https://www.linkedin.com/in/pedroamorimufl" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
       <a href="mailto:pedrovillasboasa@ufl.edu" class="btn btn-outline">Email</a>
     </div>
@@ -543,17 +677,17 @@
 
   <div class="exp-item">
     <div class="exp-meta">
-      <p class="exp-date">May 2026 — Present</p>
+      <p class="exp-date">May 2026 — August 2026</p>
       <p class="exp-company">WRTH</p>
-      <span class="exp-badge">Current</span>
+      <span class="exp-badge">Backend Engineering</span>
     </div>
     <div>
       <h3 class="exp-title">Backend Engineer Intern</h3>
       <p class="exp-subtitle">AWS-Invested · NVIDIA Inception · Pre-Seed AI-Native Commerce Infrastructure</p>
       <ul class="exp-bullets">
-        <li>Built a <span class="highlight">Node.js/TypeScript webhook pipeline</span> that routes Intercom AI conversations to Zendesk agents, giving support staff instant visibility into customer info for faster resolution</li>
-        <li>Worked with 3 engineers on a <span class="highlight">React/Stripe payment integration</span> for a live auction platform, reviewing and critiquing each other's code to prevent duplicate charges</li>
-        <li>Led backend development of a <span class="highlight">Buy/Sell companion app</span> using JavaScript, RESTful APIs, and a Gemini Vision AI pipeline, resolving SQL permission issues and enabling the sales team to quickly identify, price, and prioritize valuable items</li>
+        <li>Built a <span class="highlight">Node.js</span>/<span class="highlight">TypeScript</span> webhook pipeline that routes Intercom AI conversations to Zendesk agents, giving support staff instant visibility into customer info for faster resolution</li>
+        <li>Worked with 3 engineers on a <span class="highlight">React</span>/<span class="highlight">Stripe</span> payment integration for a live auction platform, reviewing and critiquing each other's code to prevent duplicate charges</li>
+        <li>Led backend development of a Buy/Sell companion app using <span class="highlight">JavaScript</span>, <span class="highlight">REST APIs</span>, and a <span class="highlight">Gemini Vision AI</span> pipeline, resolving SQL permission issues and enabling the sales team to quickly identify, price, and prioritize valuable items</li>
       </ul>
     </div>
   </div>
@@ -567,20 +701,23 @@
     <div>
       <h3 class="exp-title">Founder & Full-Stack Engineer <a href="https://github.com/PedroVBAmorim/CardChirp" target="_blank" style="font-family: var(--mono); font-size: 12px; font-weight: 400; color: var(--ink3); text-decoration: none; letter-spacing: 0.04em; margin-left: 8px;">↗ view repo</a></h3>
       <p class="exp-subtitle">Zero-Friction Fintech Card-Recommendation Platform</p>
+      <div class="stat-row">
+        <span class="stat-chip">7,000 monthly users at peak</span>
+        <span class="stat-chip">3,500+ active users</span>
+      </div>
       <ul class="exp-bullets">
-        <li>Designed an object-oriented (OOP) <span class="highlight">C++ prototype</span> that grew into a Python, HTML, and Dart fintech platform with <span class="highlight">7,000 monthly users at peak and 3,500+ active</span></li>
-        <li>Worked with beta testers to diagnose a Python scoring algorithm using SQL, incorporating user feedback to rebalance category weights and improve multi-card recommendations</li>
-        <li>Designed a <span class="highlight">Supabase/PostgreSQL schema</span> for card issuers, APRs, and reward tiers, with GitHub Actions for CI/CD to catch errors before deployment</li>
-        <li>Built RESTful APIs with <span class="highlight">FastAPI and Redis</span>, handling guest sessions, rate limiting, and caching across Railway and Render for uptime and reliability at scale</li>
+        <li>Designed an object-oriented <span class="highlight">C++</span> prototype that grew into a <span class="highlight">Python</span>, HTML, and Dart fintech platform</li>
+        <li>Worked with beta testers to diagnose a <span class="highlight">Python</span> scoring algorithm using <span class="highlight">SQL</span>, incorporating user feedback to rebalance category weights and improve multi-card recommendations</li>
+        <li>Designed a <span class="highlight">Supabase</span>/<span class="highlight">PostgreSQL</span> schema for card issuers, APRs, and reward tiers, with <span class="highlight">GitHub Actions</span> for CI/CD to catch errors before deployment</li>
+        <li>Built RESTful APIs with <span class="highlight">FastAPI</span> and <span class="highlight">Redis</span>, handling guest sessions, rate limiting, and caching across Railway and Render for uptime and reliability at scale</li>
       </ul>
     </div>
   </div>
 
   <div class="exp-item">
     <div class="exp-meta">
-      <p class="exp-date">Apr 2026 — July 2026</p>
+      <p class="exp-date">April 2026 — July 2026</p>
       <p class="exp-company">KingPool</p>
-      <span class="exp-badge">Current</span>
     </div>
     <div>
       <h3 class="exp-title">QA Engineering Intern</h3>
@@ -600,7 +737,7 @@
     <div>
       <h3 class="exp-title">Open Source Contribution</h3>
       <ul class="exp-bullets">
-        <li>Added a <span class="highlight">CI security rule</span> that blocks shell command tracing, preventing secrets and sensitive data from appearing in build logs and reducing the risk of credential exposure</li>
+        <li>Added a <span class="highlight">CI</span> security rule that blocks shell command tracing, preventing secrets and sensitive data from appearing in build logs and reducing the risk of credential exposure</li>
       </ul>
     </div>
   </div>
@@ -614,13 +751,21 @@
 
   <div class="projects-grid">
 
-    <a href="https://github.com/PedroVBAmorim/kalshi-edge" target="_blank" class="project-card">
+    <div class="project-card">
       <div class="project-header">
         <span class="project-name">Kalshi Edge</span>
-        <span class="project-arrow">↗</span>
       </div>
-      <p class="project-desc">End-to-end prediction market signal engine ingesting live Kalshi exchange data. Computes Z-score deviations from category-derived probability baselines with time-to-expiry correction, flagging OVERPRICED/UNDERPRICED markets. FastAPI serving layer with in-memory caching fronted by an interactive Streamlit dashboard. Built for Zerve Hackathon.</p>
-      <p class="project-stat">|Z| > 2.0 anomaly threshold · 4 API endpoints · Live filtering</p>
+      <p class="project-desc">A prediction-market signal engine that ingests live Kalshi exchange data and flags mispriced markets in real time.</p>
+      <ul class="project-highlights">
+        <li>Computes <span class="highlight">Z-score</span> deviations from category-derived probability baselines, with time-to-expiry correction</li>
+        <li><span class="highlight">FastAPI</span> serving layer with in-memory caching, fronting an interactive <span class="highlight">Streamlit</span> dashboard</li>
+        <li>Built for the Zerve Hackathon</li>
+      </ul>
+      <div class="project-stats">
+        <span class="project-stat-chip">|Z| > 2.0 anomaly threshold</span>
+        <span class="project-stat-chip">4 API endpoints</span>
+        <span class="project-stat-chip">Live market filtering</span>
+      </div>
       <div class="project-stack">
         <span class="tag">Python</span>
         <span class="tag">FastAPI</span>
@@ -628,224 +773,13 @@
         <span class="tag">REST API</span>
         <span class="tag">Statistics</span>
       </div>
-    </a>
-
-    <a href="#" class="project-card">
-      <div class="project-header">
-        <span class="project-name">DataDave — Open Source Contribution</span>
-        <span class="project-arrow">↗</span>
+      <div class="project-links">
+        <a href="https://github.com/PedroVBAmorim/kalshi-edge" target="_blank">GitHub ↗</a>
       </div>
-      <p class="project-desc">Added a CI security rule that blocks shell command tracing, preventing secrets and sensitive data from appearing in build logs and reducing the risk of credential exposure.</p>
-      <p class="project-stat">Merged PR</p>
-      <div class="project-stack">
-        <span class="tag">CI/CD</span>
-        <span class="tag">Security</span>
-      </div>
-    </a>
+    </div>
 
-    <a href="https://github.com/PedroVBAmorim/fifa-ticket-market-analysis" target="_blank" class="project-card">
+    <div class="project-card">
       <div class="project-header">
         <span class="project-name">FIFA World Cup Ticket Market Analysis</span>
-        <span class="project-arrow">↗</span>
       </div>
-      <p class="project-desc">Managed a portfolio of 40+ positions (~$40K capital), generating ~$16K net profit (~40% ROI) through data-driven market timing. Built Excel-based financial models tracking cost basis, platform fees, and net returns; analyzed historical pricing and demand data across marketplaces to optimize entry/exit timing.</p>
-      <p class="project-stat">~40% ROI · $16K profit · 40+ positions</p>
-      <div class="project-stack">
-        <span class="tag">Excel</span>
-        <span class="tag">Data Modeling</span>
-      </div>
-    </a>
-
-    <a href="https://github.com/PedroVBAmorim/market-dashboard" target="_blank" class="project-card">
-      <div class="project-header">
-        <span class="project-name">Market Insight Dashboard</span>
-        <span class="project-arrow">↗</span>
-      </div>
-      <p class="project-desc">Live stock analysis tool processing OHLCV data for 5+ equities. Computes cumulative return, annualized volatility, RSI, and max drawdown with automated plain-English market summaries. Deployed as a fully interactive public web app on Streamlit Cloud.</p>
-      <p class="project-stat">~3s analysis generation · Live public URL</p>
-      <div class="project-stack">
-        <span class="tag">Python</span>
-        <span class="tag">Pandas</span>
-        <span class="tag">Streamlit</span>
-        <span class="tag">Plotly</span>
-        <span class="tag">NumPy</span>
-      </div>
-    </a>
-
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<section>
-  <p class="section-label">Skills</p>
-  <div class="skills-grid">
-    <div>
-      <p class="skill-group-label">Languages</p>
-      <ul class="skill-list">
-        <li>Python</li>
-        <li>C++</li>
-        <li>JavaScript</li>
-        <li>TypeScript</li>
-        <li>SQL</li>
-        <li>Dart</li>
-      </ul>
-    </div>
-    <div>
-      <p class="skill-group-label">Frontend</p>
-      <ul class="skill-list">
-        <li>React</li>
-        <li>HTML / CSS</li>
-        <li>Flutter</li>
-        <li>Streamlit</li>
-      </ul>
-    </div>
-    <div>
-      <p class="skill-group-label">Backend</p>
-      <ul class="skill-list">
-        <li>Node.js / Express</li>
-        <li>FastAPI</li>
-        <li>REST APIs</li>
-        <li>PostgreSQL</li>
-        <li>Redis</li>
-      </ul>
-    </div>
-    <div>
-      <p class="skill-group-label">Data & Analysis</p>
-      <ul class="skill-list">
-        <li>Pandas / NumPy</li>
-        <li>Plotly</li>
-        <li>Excel</li>
-        <li>Supabase</li>
-      </ul>
-    </div>
-    <div>
-      <p class="skill-group-label">Cloud & Tools</p>
-      <ul class="skill-list">
-        <li>AWS Lambda / Lex</li>
-        <li>Docker</li>
-        <li>Git / GitHub</li>
-        <li>Railway / Render / Netlify</li>
-        <li>Stripe</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<section id="certifications">
-  <p class="section-label">Certifications</p>
-
-  <div class="exp-item">
-    <div class="exp-meta">
-      <p class="exp-date">Apr 2026</p>
-      <p class="exp-company">Google</p>
-    </div>
-    <div>
-      <h3 class="exp-title">Google Data Analytics Professional Certificate</h3>
-      <ul class="exp-bullets">
-        <li>Completed professional certificate covering data cleaning, analysis, visualization, and storytelling using SQL, R, and Tableau</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-meta">
-      <p class="exp-date">Apr 2026</p>
-      <p class="exp-company">AWS</p>
-    </div>
-    <div>
-      <h3 class="exp-title">Introduction to Amazon API Gateway</h3>
-      <ul class="exp-bullets">
-        <li>Covered REST API design, HTTP methods, JSON data handling, and API endpoints & routing on AWS</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-meta">
-      <p class="exp-date">Apr 2026</p>
-      <p class="exp-company">Simplilearn</p>
-    </div>
-    <div>
-      <h3 class="exp-title">Getting Started with AWS Services Fundamentals for Beginners</h3>
-      <ul class="exp-bullets">
-        <li>Completed foundational AWS training covering <span class="highlight">Amazon S3</span>, AWS Lambda, and core cloud infrastructure</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="exp-item">
-    <div class="exp-meta">
-      <p class="exp-date">Apr 2026</p>
-      <p class="exp-company">Databricks</p>
-    </div>
-    <div>
-      <h3 class="exp-title">Get Started with SQL Analytics and BI on Databricks</h3>
-      <ul class="exp-bullets">
-        <li>Earned certification in SQL, data analysis, business intelligence, and data analytics on the Databricks platform</li>
-        <li style="font-family: var(--mono); font-size: 11px; color: var(--ink3); margin-top: 6px;">Credential ID: 10059305</li>
-      </ul>
-    </div>
-  </div>
-
-</section>
-
-<div class="section-divider"></div>
-
-<section id="achievements">
-  <p class="section-label">Achievements</p>
-  <div class="skills-grid" style="grid-template-columns: repeat(2, 1fr);">
-    <div>
-      <p class="skill-group-label">Taekwondo</p>
-      <ul class="skill-list">
-        <li>Black Belt</li>
-      </ul>
-    </div>
-    <div>
-      <p class="skill-group-label">Valorant</p>
-      <ul class="skill-list">
-        <li>Top 70 NA</li>
-        <li>Top 0.0003% (30M+ players)</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<section id="contact">
-  <div class="contact-row">
-    <h2 class="contact-heading">Let's<br><em>connect.</em></h2>
-    <div class="hero-links">
-      <a href="mailto:pedrovillasboasa@ufl.edu" class="btn btn-primary">Send an email</a>
-      <a href="https://www.linkedin.com/in/pedroamorimufl" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-      <a href="https://github.com/PedroVBAmorim" target="_blank" class="btn btn-outline">GitHub ↗</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p class="footer-copy">© 2026 Pedro Villas Boas Amorim</p>
-  <div class="footer-links">
-    <a href="https://github.com/PedroVBAmorim" target="_blank">GitHub</a>
-    <a href="https://www.linkedin.com/in/pedroamorimufl" target="_blank">LinkedIn</a>
-    <a href="mailto:pedrovillasboasa@ufl.edu">Email</a>
-  </div>
-</footer>
-
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, i) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => entry.target.classList.add('visible'), i * 80);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.exp-item, .project-card, .project-card-static').forEach(el => observer.observe(el));
-</script>
-
-</body>
-</html>
+      <p
